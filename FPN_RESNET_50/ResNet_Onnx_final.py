@@ -103,7 +103,7 @@ while True:
     # Отображаем FPS на кадре
     cv2.putText(output, f"FPS: {fps:.2f}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
 
-    output = cv2.resize(output, (1240, 1080))
+    # output = cv2.resize(output, (1240, 1080))
 
     # Отображаем результат
     cv2.imshow("Segmentation with Background", output)

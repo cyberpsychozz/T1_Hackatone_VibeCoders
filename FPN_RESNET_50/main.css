@@ -1,0 +1,717 @@
+/* main.css */
+:root {
+  /* Графитово-серая цветовая палитра - темная тема (по умолчанию) */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #3d3d3d;
+  --bg-card: #252525;
+  --bg-overlay: rgba(0, 0, 0, 0.7);
+
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-muted: #888888;
+  --text-accent: #7C4DFF;
+
+  --border-color: #404040;
+  --border-light: #4a4a4a;
+
+  --primary-color: #7C4DFF;
+  --primary-hover: #6b3fe6;
+  --secondary-color: #4a5568;
+  --accent-color: #48bb78;
+
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="light"] {
+  /* Светлая тема */
+  --bg-primary: #f8f9fa;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #e9ecef;
+  --bg-card: #ffffff;
+  --bg-overlay: rgba(255, 255, 255, 0.9);
+
+  --text-primary: #2d3748;
+  --text-secondary: #4a5568;
+  --text-muted: #718096;
+  --text-accent: #7C4DFF;
+
+  --border-color: #e2e8f0;
+  --border-light: #cbd5e0;
+
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
+}
+
+/* Базовые стили */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Панели */
+.panel {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.left {
+  background-color: var(--bg-secondary);
+  border-right: 1px solid var(--border-color);
+  max-width: 60%;
+}
+
+.right {
+  background-color: var(--bg-primary);
+  max-width: 40%;
+}
+
+/* Хедер */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 16px;
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+}
+
+.logo-badge {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--primary-color), #9C27B0);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 16px;
+  color: white;
+}
+
+.h1 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.small-muted {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* Превью - компактные и адекватные */
+.preview-row {
+  display: flex;
+  gap: 16px;
+  flex: 0 0 auto;
+  height: 280px;
+  min-height: 280px;
+  max-height: 280px;
+}
+
+.window-frame {
+  flex: 1;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 256px;
+  max-height: 256px;
+}
+
+.window-frame .title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.window {
+  flex: 1;
+  background-color: var(--bg-tertiary);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  height: 100%;
+  min-height: 200px;
+}
+
+/* Стили для видео и canvas */
+.media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Специфические стили для видео */
+video.media {
+  background-color: #000;
+  transform: scaleX(-1); /* Зеркальное отображение для естественного вида */
+}
+
+/* Специфические стили для canvas */
+canvas.media {
+  background-color: var(--bg-tertiary);
+}
+
+.preview-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.preview-overlay * {
+  pointer-events: auto;
+}
+
+/* Элементы управления */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.controls-panel {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  flex: 1;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+/* Кнопки */
+.btn {
+  padding: 8px 14px;
+  background-color: var(--secondary-color);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: none;
+  flex-shrink: 0;
+  border: none;
+  outline: none;
+}
+
+.btn:hover {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-light);
+  transform: translateY(-1px);
+}
+
+.btn.primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.btn.primary:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn:disabled:hover {
+  background-color: var(--secondary-color);
+  transform: none;
+}
+
+/* Загрузка файлов */
+.upload-file {
+  padding: 10px 12px;
+  background-color: var(--bg-tertiary);
+  border: 2px dashed var(--border-color);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  flex: 1;
+  min-width: 120px;
+  display: block;
+}
+
+.upload-file:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background-color: var(--bg-secondary);
+}
+
+.upload-file input {
+  display: none;
+}
+
+/* Поля ввода */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 100px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.input {
+  padding: 8px 10px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(124, 76, 255, 0.1);
+}
+
+.input[type="range"] {
+  padding: 0;
+  height: 6px;
+  background: var(--bg-tertiary);
+  border: none;
+  border-radius: 3px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+.input[type="color"] {
+  padding: 4px;
+  height: 36px;
+  cursor: pointer;
+  min-width: 50px;
+  border: 1px solid var(--border-color);
+}
+
+select.input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23b3b3b3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 35px;
+}
+
+/* Перетаскиваемые элементы */
+.draggable {
+  position: absolute;
+  background-color: var(--bg-overlay);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: move;
+  user-select: none;
+  white-space: pre-line;
+  line-height: 1.4;
+  transition: all 0.2s ease;
+  max-width: 220px;
+  min-width: 180px;
+  width: auto;
+}
+
+.draggable:hover {
+  border-color: rgba(124, 77, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+}
+
+.draggable.logo {
+  background: transparent;
+  border: none;
+  padding: 0;
+  max-width: none;
+  min-width: auto;
+}
+
+/* Увеличиваем размер логотип-плейсхолдера */
+.logo-placeholder {
+  position: absolute;
+  width: 90px;
+  height: 70px;
+  background: linear-gradient(135deg, var(--primary-color), #9C27B0);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  right: 12px;
+  top: 12px;
+  pointer-events: none;
+}
+
+/* Галерея шаблонов */
+.template-gallery {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 8px;
+}
+
+.gallery-thumbs {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 6px 0;
+}
+
+.gallery-thumb {
+  width: 50px;
+  height: 38px;
+  border-radius: 4px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.gallery-thumb:hover {
+  border-color: var(--border-light);
+  transform: scale(1.05);
+}
+
+.gallery-thumb.active {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+/* Бейджи */
+.badge {
+  padding: 5px 10px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Футер */
+.footer {
+  margin-top: auto;
+  padding: 12px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 12px;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Статус */
+.status {
+  padding: 6px 10px;
+  background-color: var(--bg-tertiary);
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  min-height: 20px;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.window-frame,
+.controls-panel {
+  animation: fadeIn 0.3s ease;
+}
+
+/* Индикатор загрузки модели */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.loading {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .left,
+  .right {
+    max-width: 100%;
+  }
+
+  .left {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .preview-row {
+    height: 260px;
+    min-height: 260px;
+    max-height: 260px;
+  }
+}
+
+@media (max-width: 768px) {
+  .panel {
+    padding: 12px;
+  }
+
+  .preview-row {
+    flex-direction: column;
+    height: auto;
+    min-height: 500px;
+    max-height: none;
+    gap: 12px;
+  }
+
+  .window-frame {
+    height: 240px;
+    min-height: 240px;
+    max-height: 240px;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .field {
+    min-width: auto;
+  }
+
+  .header {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .upload-file {
+    min-width: auto;
+  }
+
+  .draggable {
+    max-width: 200px;
+    min-width: 160px;
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .logo-placeholder {
+    width: 80px;
+    height: 60px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .panel {
+    padding: 10px;
+  }
+
+  .preview-row {
+    min-height: 450px;
+  }
+
+  .window-frame {
+    height: 220px;
+    min-height: 220px;
+    max-height: 220px;
+  }
+}
+
+/* Специфические стили для светлой темы */
+[data-theme="light"] .draggable {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .logo-placeholder {
+  background: linear-gradient(135deg, #7C4DFF, #9C27B0);
+}
+
+[data-theme="light"] .upload-file {
+  background-color: var(--bg-secondary);
+}
+
+[data-theme="light"] .gallery-main {
+  background-color: var(--bg-secondary);
+}
+
+[data-theme="light"] video.media {
+  background-color: #f0f0f0;
+}
+
+[data-theme="light"] canvas.media {
+  background-color: var(--bg-tertiary);
+}
+
+/* Скрытие скроллбаров для лучшего вида */
+.gallery-thumbs::-webkit-scrollbar {
+  height: 4px;
+}
+
+.gallery-thumbs::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+  border-radius: 2px;
+}
+
+.gallery-thumbs::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 2px;
+}
+
+.gallery-thumbs::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+.gallery-thumbs::-moz-scrollbar {
+  height: 4px;
+}
+
+.gallery-thumbs::-moz-scrollbar-track {
+  background: var(--bg-tertiary);
+  border-radius: 2px;
+}
+
+.gallery-thumbs::-moz-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 2px;
+}
+
+.gallery-thumbs::-moz-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Фиксируем высоты чтобы не растягивалось */
+.left {
+  min-height: calc(100vh - 32px);
+}
+
+.right {
+  min-height: calc(100vh - 32px);
+}
+
+/* Стили для FPS индикатора */
+.fps-indicator {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #0f0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: monospace;
+  z-index: 10;
+}
