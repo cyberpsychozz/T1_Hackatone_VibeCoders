@@ -7,7 +7,7 @@ import time
 onnx_path = "fpn_resnet50_model.onnx"  # Путь к вашей ONNX-модели
 img_size = 384  # Размер изображения для модели
 device = "cuda"  # или "cuda", если доступен GPU
-background_path = "/home/cyberpsychoz/backgrounds"  # Путь к фону
+background_path = "backgrounds/back.png"  # Путь к фону
 
 # Загружаем ONNX-модель
 sess = ort.InferenceSession(
