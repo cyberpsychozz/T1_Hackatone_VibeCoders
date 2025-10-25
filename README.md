@@ -29,6 +29,7 @@
 ## 🚀 Запуск
 
 **Способ 1: HTML/CSS/JavaScript**<br>
+cd FPN_RESNET_50 <br>
 `python src/web_app.py`<br>
 **Способ 2: Streamlit**<br>
 `streamlit run src/app.py`
